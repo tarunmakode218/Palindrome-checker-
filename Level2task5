@@ -1,0 +1,57 @@
+# Level2task5 "File Manipulation"
+import string
+
+# File path
+file_path = f'C:/Users/tarun/Level2task5.py'
+
+
+
+def read_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            text = file.read()
+        return text
+    except FileNotFoundError:
+        print("File not found. Please check the file path and try again.")
+        return None
+
+
+def count_words(text):
+
+    text = text.lower()
+
+
+    translator = str.maketrans('', '', string.punctuation)
+    text = text.translate(translator)
+
+
+    words = text.split()
+
+
+    word_count = {}
+    for word in words:
+        if word in word_count:
+            word_count[word] += 1
+        else:
+            word_count[word] = 1
+    
+    return word_count
+
+
+def display_word_counts(word_count):
+
+    sorted_word_count = dict(sorted(word_count.items()))
+
+    results
+    for word, count in sorted_word_count.items():
+        print(f'{word}: {count}')
+
+def main(file_path):
+    text = read_file(file_path)
+    if text:
+        word_count = count_words(text)
+        display_word_counts(word_count)
+
+ 
+if __name__ == '__main__':
+    main(file_path)
